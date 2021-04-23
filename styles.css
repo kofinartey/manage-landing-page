@@ -22,13 +22,6 @@ Larger screen widths are addressed in media queries
     --pale-red: hsl(13, 100%, 96%);
     --light-gray: hsl(0, 0%, 98%);
 }
-
-body{
-    min-width: 375px;
-    width: 100%;
-    font-family: 'Be Vietnam', sans-serif;
-    font-weight: 500;
-}
 a, a:hover, a:visited {
     text-decoration: none;
 }
@@ -38,10 +31,20 @@ h1, h2, h3, h4 {
 }
 p{
     color: var(--dark-grayish-blue);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 1.8rem;;
 }
+
+body{
+    min-width: 375px;
+    width: 100%;
+    font-family: 'Be Vietnam', sans-serif;
+    font-weight: 500;
+}
+
+
+
 button, .button {
     background-color: var(--bright-red);
     padding: 12px 30px;
@@ -197,7 +200,7 @@ main{
 
 .difference {
     margin: 50px 0;
-    width: 90%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -213,8 +216,12 @@ main{
     margin-bottom: 20px;
 }
 .difference__intro p {
-    font-size: 17px;
+    font-size: 16px;
 
+}
+.differece__details {
+    position: relative;
+    left: 5px;
 }
 .diff{
    
@@ -235,7 +242,7 @@ main{
 }
 .diff p {
     font-size: 16px;
-    width: 350px;
+    width: 360px;
 }
 .diff .background {
     background-color: var(--bright-red);
@@ -247,6 +254,50 @@ main{
     top: 30px;
     right: -20px;
 }
+
+.opinions {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.opinions__heading {
+    margin-bottom: 4rem;
+}
+.opinions__heading h2{
+    font-size: 30px;
+}
+.review {
+    /* background-color: var(--light-gray); */
+    background-color: gray;
+    padding: 20px;
+    margin-right: 40px;
+    
+}
+.review img {
+    width: 80px;
+    margin-bottom: 1rem;
+}
+.review h4{
+    margin-bottom: 1rem;
+}
+.review .comment {
+    width: 310px;
+
+}
+.review__wrapper {
+    margin-bottom: 40px;
+    width: 110%;
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    overflow-x: auto;
+}
+.review__wrapper::-webkit-scrollbar {
+    display: none;
+}
+
 
 
 
@@ -366,6 +417,17 @@ main{
     }
     .diff .background {
         display: none;
+    }
+
+
+    .review__wrapper {
+        
+    }
+    .review {
+        width: 450px;
+    }
+    .review .comment {
+        width: 450px;
     }
 
 
