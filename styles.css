@@ -38,9 +38,10 @@ p{
 
 body{
     min-width: 375px;
-    width: 100%;
+    /* width: 100%; */
     font-family: 'Be Vietnam', sans-serif;
     font-weight: 500;
+    overflow-x: hidden;
 }
 
 
@@ -88,9 +89,7 @@ nav {
     transition: all .3s ease-in-out;
     transform-origin: 1px 2px;
 }
-.hamburger__open {
-    
-}
+
 .hamburger__open span:first-of-type {
    transform: rotate(45deg);
 }
@@ -223,9 +222,9 @@ main{
     position: relative;
     left: 5px;
 }
-.diff{
+/* .diff{
    
-}
+} */
 .diff__number {
     background-color: var(--bright-red);
     color:white;
@@ -252,11 +251,11 @@ main{
     border-radius: 40px 0 0 40px;
     position: relative;
     top: 30px;
-    right: -20px;
+    /* right: 10px; */
 }
 
 .opinions {
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -268,12 +267,21 @@ main{
 .opinions__heading h2{
     font-size: 30px;
 }
+.review__wrapper {
+    margin-bottom: 40px;
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: space-between;;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
 .review {
-    /* background-color: var(--light-gray); */
-    background-color: gray;
-    padding: 20px;
     margin-right: 40px;
-    
+    min-width: 360px;    
+}
+.review:first-of-type {
+    margin-left: 10px;
 }
 .review img {
     width: 80px;
@@ -283,20 +291,19 @@ main{
     margin-bottom: 1rem;
 }
 .review .comment {
-    width: 310px;
+    padding: 0 25px;
 
 }
-.review__wrapper {
-    margin-bottom: 40px;
-    width: 110%;
-    display: flex;
-    justify-content: center;
-    justify-self: center;
-    overflow-x: auto;
+.review__background{
+    width: 100%;
+    height: 90%;
+    padding: -10px;
+    background-color: var(--light-gray);
+    position: relative;
+    top: -210px;
+    z-index: -1;
 }
-.review__wrapper::-webkit-scrollbar {
-    display: none;
-}
+
 
 
 
@@ -396,9 +403,7 @@ main{
     .difference__intro p {
         width: 350px;
     }
-    .difference__details {
-        /* width: 50%; */
-    }
+ 
     .diff{
        width: 350px;
        margin-bottom: 40px;
@@ -420,15 +425,17 @@ main{
     }
 
 
-    .review__wrapper {
-        
-    }
+
     .review {
-        width: 450px;
+        min-width: 540px;
+        margin-right: 10px;
+        padding:  30px;
     }
-    .review .comment {
-        width: 450px;
+
+    .review__background{
+        top: -185px;
     }
+   
 
 
 }
@@ -436,9 +443,7 @@ main{
 
 @media(min-width:1440px){
     
-   body{
-       width: 95%;
-   }
+  
     .intro h1{
         font-size: 55px;
 
