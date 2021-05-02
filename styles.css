@@ -29,6 +29,9 @@ a, a:hover, a:visited {
 h1, h2, h3, h4 {
     color: var(--dark-blue);
 }
+h2{
+    font-size: 30px;
+}
 p{
     color: var(--dark-grayish-blue);
     font-size: 16px;
@@ -52,13 +55,41 @@ button, .button {
     border: 1px solid var(--bright-red);
     border-radius: 50px;
     color:white;
-    box-shadow: 0 7px 8px rgba(242, 95, 58, 0.4);
+    box-shadow: 0 10px 8px rgba(242, 95, 58, 0.4);
+    transition: all .3s ease-in-out;
+}
+.button:hover {
+    /* filter: brightness(150%); */
+    opacity: .7;
+}
+.button:active{
+    animation: btn-click .3s ease-in;
+}
+@keyframes btn-click {
+    0%{}
+    25%{
+        border: 4px solid rgb(245, 164, 144);
+    }
+    50%{
+        border: 4px solid rgb(245, 164, 144);
+        box-shadow: none;
+    }
+    75%{
+        border: 4px solid rgb(245, 164, 144);
+    }
+    100%{}
+}
+
+.btn--light {
+    background-color: white;
+    color: var(--bright-red);
+    box-shadow: none;
 }
 
 /* ========HEADER STYLES========= */
 nav {
     width: 100%;
-    height: 100px;
+    height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -85,7 +116,7 @@ nav {
 .hamburger span{
     background-color: black;
     height: 4px;
-    width: 25px;
+width: 25px;
     transition: all .3s ease-in-out;
     transform-origin: 1px 2px;
 }
@@ -268,6 +299,9 @@ main{
 .opinions__heading h2{
     font-size: 30px;
 }
+.opinions__cta{
+    margin-top: 60px;
+}
 
 .review__wrapper {
     /* margin-bottom: 40px; */
@@ -318,7 +352,8 @@ main{
     width: 100%;
     display: flex;
     justify-content: center;
-
+    /* position: relative; */
+    /* top: -10px; */
 }
 .indicator__circle {
     width: 10px;
@@ -335,18 +370,24 @@ main{
     cursor: pointer;
 }
 .arrows__container {
+    /* background-color: red; */
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     position: relative;
     top: -250px;
+    opacity: 0;
     z-index: 5;
+}
+.arrows__container:hover{
+    opacity: .4;
 }
 .arrow {
     width: 40px;
     height: 40px;
     margin: 0 20px;
-    opacity: .5;
+    /* opacity: 0.1; */
     background-color: var(--bright-red);
     border-radius: 50%;
     display: flex;
@@ -359,7 +400,6 @@ main{
 .arrow:hover {
     opacity: 1;
     transition: all .3s ease-in-out;
-
 }
 .d-none {
     display: none;
@@ -388,6 +428,108 @@ main{
 .arrow--inactive::hover{
     opacity: 0.5;
 }
+
+
+
+.simplify {
+    background-color: var(--bright-red);
+    width: 100%;
+    height: 400px;
+    padding: 70px 30px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+.simplify__text h2{
+    font-size: 40px;
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+footer {
+    height: 540px;
+    background-color: var(--very-dark-blue);
+    display: flex;
+    justify-content: center;
+    /* padding: 50px 10px; */
+}
+.footer__wrapper{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+}
+.footer form{
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+footer form input[type = "text"] {
+    height: 45px;
+    width: 270px;
+    border-radius: 30px;
+    padding-right: 20px;
+    margin-right: 8px;
+}
+
+.footer__links {
+    width: 80%;
+    max-width: 300px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+   
+}
+.footer__links .links__column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__links a{
+    color: white;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+.footer__links a:hover{
+    color: var(--bright-red);
+}
+footer .social__media {
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 50px;
+}
+.footer .social__media a{
+    /* height: 30px; */
+}
+.social__media img {
+    width: 33px;
+}
+.social__media img:hover {
+    filter: invert(55%) sepia(40%) saturate(6370%) 
+    hue-rotate(335deg) brightness(100%) contrast(93%);
+}
+
+.footer__logo {
+    margin-bottom: 40px;
+}
+.footer__logo img {
+    color: white;
+    width: 160px;
+}
+.footer .copyright p{
+    color: var(--dark-grayish-blue);
+    font-size: 12px;
+}
+
 
 
 
@@ -439,9 +581,9 @@ main{
         display: inline-block;
         font-size: 14px;
     }
-   .nav__cta:hover {
+   /* .nav__cta:hover {
        opacity: .7;
-   }
+   } */
 
    
 
@@ -525,16 +667,90 @@ main{
     .indicator__container{
         display: none;
     }
+    .opinions__cta {
+        position: relative;
+        top: -100px;
+    }
 
-   
+    .simplify{
+        flex-direction: row;
+        height: 220px;
+    }
+    .simplify__text {
+        width: 50%;
+    }
+    .simplify__text h2 {
+        text-align: left;
+    }
+
+
+    footer{
+        height: 250px;
+    }
+    .footer__wrapper {
+        width: 80%;
+        height: 100%;
+        padding: 60px 0;
+        display: grid;
+        grid-template-columns: 1.5fr 2.5fr 2fr;
+        /* grid-template-rows: 1fr; */
+        align-items: flex-start;
+    }
+    .footer__logo {
+        grid-column: 1/2;
+        grid-row: 1/2
+    }
+    footer .social__media {
+        /* background-color: red; */
+        grid-column: 1/2;
+        grid-row: 1/2;
+        width: 200px;
+        margin: 0;
+        justify-self: flex-start;
+        position: relative;
+        top: 130px;
+    }
+    .social__media img{
+        display: block;
+        width: 21px;
+        height: 21px;
+        margin-right: 12px;
+      
+        /* width: 33px; */
+    }
+    .footer__links {
+        grid-column: 2/3;
+        grid-row: 1/2;
+        margin: 0;
+        justify-self: center;
+    }
+    .footer form { 
+        grid-column: 3/4;
+        grid-row: 1/2;
+        margin: 0;
+        justify-self: flex-end;
+    }
+    .footer .copyright{
+        grid-column: 3/4;
+        grid-row: 1/2;
+        position: relative;
+        top: 120px;
+        justify-self: flex-end;
+    }
+   .footer .copyright p {
+    font-size: 14px;
+   }
 
 
 }
 
 
 @media(min-width:1440px){
+ 
+
+   
     
-  
+    /* .intro__wrapper{ width: 70%;} */
     .intro h1{
         font-size: 55px;
 
@@ -551,4 +767,9 @@ main{
     .diff{
         width: 400px;
      }
+     .simplify__text {
+        width: 45%;
+    }
+
+     
 }

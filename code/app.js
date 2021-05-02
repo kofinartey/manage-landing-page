@@ -20,7 +20,7 @@ hamburger.addEventListener("click", () => {
 let reviews = document.querySelectorAll(".review");
 let arrows = document.querySelectorAll(".arrow"); //thus left = arrow[0], right = arrow[1]
 let leftArrow = arrows[0];
-let rightArrow = arrows[1]
+let rightArrow = arrows[1];
 let currentIndex = 0;
 
 
@@ -36,14 +36,14 @@ for (let i = 0; i < reviews.length; i++) {
         markIndicator();
         if (currentIndex === reviews.length - 1) {
             arrowInactive(rightArrow);
-            leftArrow.style.backgroundColor = "var(--bright-red)";
+            arrowActive(leftArrow);
         } else if (currentIndex === 0) {
             arrowInactive(leftArrow);
-            rightArrow.style.backgroundColor = "var(--bright-red)";
+            arrowActive(rightArrow);
         }
         else {
-            leftArrow.style.backgroundColor = "var(--bright-red)";
-            rightArrow.style.backgroundColor = "var(--bright-red)";
+            arrowActive(leftArrow);
+            arrowActive(rightArrow);
         }
 
     })
@@ -52,10 +52,14 @@ for (let i = 0; i < reviews.length; i++) {
     indicatorContainer.append(indicatorCircle);
 }
 
-
+//grey out the passed  arrow
 function arrowInactive(arrow) {
     arrow.style.backgroundColor = "grey";
 
+}
+//Activate arrow
+function arrowActive(arrow) {
+    arrow.style.backgroundColor = "var(--bright-red)";
 }
 
 //Display a review
@@ -86,9 +90,8 @@ function moveLeft() {
         currentIndex--;
         displayReview();
         markIndicator();
-        rightArrow.style.backgroundColor = "var(--bright-red)";
+        arrowActive(rightArrow);
     }
-
 }
 
 //move to NEXT review
@@ -97,7 +100,7 @@ function moveRight() {
         currentIndex++;
         displayReview();
         markIndicator();
-        leftArrow.style.backgroundColor = "var(--bright-red)";
+        arrowActive(leftArrow);
 
     } else if (currentIndex === reviews.length - 1) {
         arrowInactive(rightArrow);
@@ -108,23 +111,21 @@ function moveRight() {
 leftArrow.addEventListener("click", moveLeft);
 rightArrow.addEventListener("click", moveRight);
 
-
-
 /* Calling these functions ensure that the first review is displayed 
 and the corresponding indicator marked when the page loads*/
 displayReview();
 markIndicator();
 
 
-if (currentIndex === reviews.length - 1) {
-    console.log("last review");
-    arrowInactive(rightArrow);
-} else if (currentIndex === 0) {
-    arrowInactive(leftArrow);
-} else {
-    leftArrow.style.backgroundColor = "var(--bright-red)";
-    rightArrow.style.backgroundColor = "var(--bright-red)";
-}
+// if (currentIndex === reviews.length - 1) {
+//     console.log("last review");
+//     arrowInactive(rightArrow);
+// } else if (currentIndex === 0) {
+//     arrowInactive(leftArrow);
+// } else {
+//     leftArrow.style.backgroundColor = "var(--bright-red)";
+//     rightArrow.style.backgroundColor = "var(--bright-red)";
+// }
 
 
 //ISSUES TO FIX
