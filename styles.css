@@ -55,24 +55,29 @@ button, .button {
     border: 1px solid var(--bright-red);
     border-radius: 50px;
     color:white;
-    box-shadow: 0 10px 8px rgba(242, 95, 58, 0.4);
+    box-shadow: 0 7px 8px rgba(242, 95, 58, 0.3);
     transition: all .3s ease-in-out;
+}
+.button:focus {
+    box-shadow: 0 15px 10px rgba(242, 95, 58, 0.3);
 }
 .button:hover {
     /* filter: brightness(150%); */
     opacity: .7;
 }
 .button:active{
+    border: 3px solid rgb(245, 164, 144);
     animation: btn-click .3s ease-in;
 }
 @keyframes btn-click {
     0%{}
     25%{
-        border: 4px solid rgb(245, 164, 144);
+        border: 3px solid rgb(245, 164, 144);
     }
     50%{
-        border: 4px solid rgb(245, 164, 144);
+        border: 3px solid rgb(245, 164, 144);
         box-shadow: none;
+        opacity: 1;
     }
     75%{
         border: 4px solid rgb(245, 164, 144);
@@ -87,9 +92,29 @@ button, .button {
 }
 
 /* ========HEADER STYLES========= */
+.skip-links{
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    list-style: none;
+    /* background-color: var(--very-dark-blue); */
+    position: relative;
+    left: 10%;
+}
+
+.skip-links a{
+    color: white;
+    padding: 5px 10px;
+    position: absolute;
+    top: -3rem;
+    background-color: var(--very-dark-blue);
+}
+.skip-links a:focus{
+    top: 5px;
+}
 nav {
     width: 100%;
-    height: 150px;
+    height: 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -217,16 +242,19 @@ main{
 .intro p {
     margin-bottom: 3rem;
 }
-/* .intro__bkg{
+.intro__bkg{
     width: 300px;
     height: 600px;
     transform: rotate(45deg);
-    opacity: .2;
+    opacity: .1;
     border-radius: 200px;
     background-color: var(--bright-red);
-    position: relative;
+    position: absolute;
     top: -200px;
-} */
+    right: -100px;
+    z-index: -1;
+    overflow-x: hidden;
+}
 
 .difference {
     margin: 50px 0;
@@ -377,17 +405,16 @@ main{
     align-items: center;
     position: relative;
     top: -250px;
-    opacity: 0;
-    z-index: 5;
+    /* opacity: 0; */
+    /* z-index: 5; */
 }
-.arrows__container:hover{
+.arrows__container--show{
     opacity: .4;
 }
 .arrow {
     width: 40px;
     height: 40px;
     margin: 0 20px;
-    /* opacity: 0.1; */
     background-color: var(--bright-red);
     border-radius: 50%;
     display: flex;
@@ -396,11 +423,12 @@ main{
     align-items: center;
     position: relative;
     cursor: pointer;
+    opacity: 0;
 }
-.arrow:hover {
-    opacity: 1;
+/* .arrow:hover {
+
     transition: all .3s ease-in-out;
-}
+} */
 .d-none {
     display: none;
 }
@@ -418,7 +446,7 @@ main{
     background-color: white;
     transform: translateY(1px) rotate(-45deg);
 }
-.arrow__left {
+.arrow--left {
     transform: rotate(180deg);
 }
 .arrow--inactive{
@@ -471,14 +499,22 @@ footer {
     display: flex;
     justify-content: center;
 }
-footer form input[type = "text"] {
+footer form input[type = "email"] {
     height: 45px;
     width: 270px;
     border-radius: 30px;
     padding-right: 20px;
     margin-right: 8px;
+    /* text-align: center; */
 }
+footer form input[type="email"]::placeholder{
+    padding-left: 20px;
+    color: var(--dark-grayish-blue);
 
+}
+.footer form button{
+    box-shadow: none;
+}
 .footer__links {
     width: 80%;
     max-width: 300px;
@@ -529,6 +565,10 @@ footer .social__media {
     color: var(--dark-grayish-blue);
     font-size: 12px;
 }
+.footer .copyright a{
+    color: hsl(12, 88%, 59%); 
+    margin-left: 10px;
+}
 
 
 
@@ -551,6 +591,9 @@ footer .social__media {
 @media(min-width:1024px){
     .hamburger{
         display: none;
+    }
+    nav {
+        height: 150px;
     }
     .nav__wrapper {
         width: 80%;
@@ -653,12 +696,13 @@ footer .social__media {
 
 
     .review__wrapper {
-        width: 100%;
+        width: 1200px;
     }
     .review {
         width: 540px;
         margin-right: 10px;
         padding:  30px;
+
     }
 
     .review__background{
@@ -708,7 +752,7 @@ footer .social__media {
         margin: 0;
         justify-self: flex-start;
         position: relative;
-        top: 130px;
+        top: 110px;
     }
     .social__media img{
         display: block;
@@ -734,7 +778,7 @@ footer .social__media {
         grid-column: 3/4;
         grid-row: 1/2;
         position: relative;
-        top: 120px;
+        top: 110px;
         justify-self: flex-end;
     }
    .footer .copyright p {

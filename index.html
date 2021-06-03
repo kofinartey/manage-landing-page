@@ -24,10 +24,13 @@
 </head>
 
 <body>
+  <ul class="skip-links">
+    <li><a href="#nav">Skip to Navigation</a></li>
+    <li><a href="#main">Skip to Main Content</a></li>
+  </ul>
 
-  <header>
-
-    <nav>
+  <header id="top" role="banner">
+    <nav id="nav" role="navigation">
       <div class="nav__wrapper">
         <div class="logo">
           <a href="#"> <img src="images/logo.svg" alt=""> </a>
@@ -60,7 +63,7 @@
           </div>
         </div>
         <div class="nav__cta">
-          <a href="#" class="button">Get Started</a>
+          <a href="#" class="button" role="button">Get Started</a>
         </div>
 
       </div>
@@ -69,13 +72,15 @@
   </header>
 
   <!-- ================MAIN================= -->
-  <main>
+  <main id="main" role="main">
 
     <!-- introductory section -->
     <section class="intro">
       <div class="intro__wrapper">
+        <div class="intro__bkg"></div>
 
-        <img src="images/illustration-intro.svg" alt="" class="intro__img">
+        <img src="images/illustration-intro.svg" alt="An inforgraphic representation of the company's performance"
+          class="intro__img">
 
         <div class="text__content">
           <h1> Bring everyone together to build better products.</h1>
@@ -83,7 +88,7 @@
             Manage makes it simple for software teams to plan day-to-day
             tasks while keeping the larger team goals in view.
           </p>
-          <a href="#" class="button">Get Started</a>
+          <a href="#" class="button" role="button">Get Started</a>
         </div>
 
       </div>
@@ -209,8 +214,8 @@
         <!-- Review wrapper ends here -->
       </div>
       <div class="arrows__container">
-        <div class="arrow arrow__left"></div>
-        <div class=" arrow arrow__right"></div>
+        <div class="arrow arrow--left"></div>
+        <div class=" arrow arrow--right"></div>
       </div>
 
 
@@ -226,7 +231,7 @@
 
     </section>
 
-    <section class="simplify">
+    <section class="simplify" role="complementary">
       <div class="simplify__text">
         <h2> Simplify how your team works today.</h2>
       </div>
@@ -236,12 +241,12 @@
     </section>
 
   </main>
-  <footer class="footer">
+  <footer class="footer" role="contentinfo">
     <div class="footer__wrapper">
 
 
-      <form action="">
-        <input type="text" placeholder="Updates in your inbox...">
+      <form action="/" id="form" role="form">
+        <input type="email" name="email" id="email" placeholder="Updates in your inbox..." data-error="Invalid E-mail">
         <button class="button">Go</button>
       </form>
 
@@ -289,7 +294,9 @@
       <div class="copyright">
         <p>
           Copyright 2020. All Rights Reserved
+          <a href="#top">Top</a>
         </p>
+
       </div>
     </div>
   </footer>

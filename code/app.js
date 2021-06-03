@@ -17,11 +17,27 @@ hamburger.addEventListener("click", () => {
 
 
 // SLIDER/CAROUSEL INTERACTIVITY
+let reviewWrapper = document.querySelector(".review__wrapper");
 let reviews = document.querySelectorAll(".review");
 let arrows = document.querySelectorAll(".arrow"); //thus left = arrow[0], right = arrow[1]
 let leftArrow = arrows[0];
 let rightArrow = arrows[1];
 let currentIndex = 0;
+//the following comments used to make sense but I refactored the code and I'm leaving it just in case it will be helpful when something breaks
+//selects and groups all the small circles.
+//Did this here because initializing indicators before the "for" loop above would not return any values
+let indicators = document.querySelectorAll(".indicator__circle")
+
+
+/* Calling these functions ensure that the first review is displayed 
+and the corresponding indicator marked when the page loads*/
+displayReview();
+markIndicator();
+
+//Add event listeners to arrows
+leftArrow.addEventListener("click", moveLeft);
+rightArrow.addEventListener("click", moveRight);
+
 
 
 //create indicator circles based on number of reviews to display
@@ -52,28 +68,16 @@ for (let i = 0; i < reviews.length; i++) {
     indicatorContainer.append(indicatorCircle);
 }
 
-//grey out the passed  arrow
-function arrowInactive(arrow) {
-    arrow.style.backgroundColor = "grey";
-
-}
-//Activate arrow
-function arrowActive(arrow) {
-    arrow.style.backgroundColor = "var(--bright-red)";
-}
-
 //Display a review
 function displayReview() {
     for (let j = 0; j < reviews.length; j++) {
         reviews[j].style.display = "none";
     }
-    reviews[currentIndex].style.display = "block";
+    setTimeout(() => {
+        reviews[currentIndex].style.display = "block";
+    }, 200)
+
 }
-
-//selects and groups all the small circles.
-//Did this here because initializing indicators before the "for" loop above would not return any values
-let indicators = document.querySelectorAll(".indicator__circle")
-
 //Activate corresponding indicator 
 function markIndicator() {
     for (let j = 0; j < indicators.length; j++) {
@@ -101,20 +105,48 @@ function moveRight() {
         displayReview();
         markIndicator();
         arrowActive(leftArrow);
-
     } else if (currentIndex === reviews.length - 1) {
         arrowInactive(rightArrow);
     }
 }
 
-//Add event listeners to arrows
-leftArrow.addEventListener("click", moveLeft);
-rightArrow.addEventListener("click", moveRight);
 
-/* Calling these functions ensure that the first review is displayed 
-and the corresponding indicator marked when the page loads*/
-displayReview();
-markIndicator();
+//grey out the inactive arrows
+function arrowInactive(arrow) {
+    arrow.style.backgroundColor = "grey";
+}
+//colorize the active arrows
+function arrowActive(arrow) {
+    arrow.style.backgroundColor = "var(--bright-red)";
+}
+
+//REVIEW HOVER EFFECTS TO DISPLAY BUTTON
+//increase button opacity to .5 for hovering reveiewWrapper a
+let arrowsContainer = document.querySelector(".arrows__container");
+
+reviewWrapper.addEventListener("mouseenter", arrowsShow);
+reviewWrapper.addEventListener("mouseleave", arrowsHide);
+//needed to repeat same code for arrow container since it lies outside the reviewWrapper
+arrowsContainer.addEventListener("mouseenter", arrowsShow);
+arrowsContainer.addEventListener("mouseleave", arrowsHide);
+//increase button opacity to .1 for hovereing over the button itself
+leftArrow.addEventListener("mouseenter", () => { leftArrow.style.opacity = "1"; })
+rightArrow.addEventListener("mouseenter", () => { rightArrow.style.opacity = "1"; })
+
+function arrowsShow() {
+    leftArrow.style.opacity = "0.5";
+    rightArrow.style.opacity = "0.5";
+}
+function arrowsHide() {
+    leftArrow.style.opacity = "0";
+    rightArrow.style.opacity = "0";
+}
+
+
+
+
+
+
 
 
 // if (currentIndex === reviews.length - 1) {
@@ -132,6 +164,7 @@ markIndicator();
 // 1. Arrows do not immediately inactivate when the first or last review is displayed using the arrow buttons
 // 2. No transition between reviews
 // 3. Change whole appearance at larger screen widths
+
 
 
 
